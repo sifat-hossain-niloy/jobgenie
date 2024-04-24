@@ -1,6 +1,6 @@
 import './App.css';
 import * as React from 'react';
-import { useRoutes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useRoutes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -35,11 +35,12 @@ const theme = createTheme({
 });
 
 function App() {
-  const routing = useRoutes(Router);
+  const routing = createBrowserRouter(Router);
   return ( 
     <ThemeProvider theme={theme}>
       <ToastContainer /> 
-      {routing}
+      {/* {routing} */}
+      <RouterProvider router={routing}/>
     </ThemeProvider>
   );
 }
