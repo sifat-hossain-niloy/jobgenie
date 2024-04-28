@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled, Container, Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Header from "./header/Header";
@@ -21,7 +21,10 @@ const PageWrapper = styled('div')(() => ({
   
 }));
 
+
+
 const FullLayout = () => {
+
     return (
       <MainWrapper className='mainwrapper'>
         <Header />

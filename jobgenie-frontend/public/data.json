@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "card_title": "Mountain Sunset",
+        "card_photoURL": "https://example.com/mountain_sunset.jpg",
+        "card_description": "A breathtaking view of the sun setting behind snow-capped mountains."
+    },
+    {
+        "id": 2,
+        "card_title": "Tropical Paradise",
+        "card_photoURL": "https://example.com/tropical_paradise.jpg",
+        "card_description": "Palm trees swaying in the breeze on a white sandy beach with crystal-clear waters."
+    },
+    {
+        "id": 3,
+        "card_title": "City Skyline",
+        "card_photoURL": "https://example.com/city_skyline.jpg",
+        "card_description": "The skyline of a bustling city at night, illuminated by neon lights and skyscrapers."
+    },
+    {
+        "id": 4,
+        "card_title": "Autumn Forest",
+        "card_photoURL": "https://example.com/autumn_forest.jpg",
+        "card_description": "Vibrant orange and yellow leaves cover the forest floor in a peaceful autumn scene."
+    },
+    {
+        "id": 5,
+        "card_title": "Desert Dunes",
+        "card_photoURL": "https://example.com/desert_dunes.jpg",
+        "card_description": "Endless sand dunes stretching out to the horizon under a clear blue sky."
+    },
+    {
+        "id": 6,
+        "card_title": "Northern Lights",
+        "card_photoURL": "https://example.com/northern_lights.jpg",
+        "card_description": "A mesmerizing display of colorful auroras dancing across the night sky."
+    }
+]

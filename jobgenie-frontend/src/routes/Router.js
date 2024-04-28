@@ -27,6 +27,7 @@ const Router = [
             {
                 path: '/templates',
                 element: <Templates />,
+                loader: () => fetch('/data.json'),
             },
             {
                 path: '/cv-builder',
