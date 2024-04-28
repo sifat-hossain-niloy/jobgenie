@@ -6,7 +6,7 @@ import Loadable from '../layouts/Loadable';
 const FullLayout = Loadable(lazy(() => import('../layouts/FullLayout')));
 
 const Home = Loadable(lazy(() => import('../views/home/Home')));
-const Jobs = Loadable(lazy(() => import('../views/jobs/Jobs')));
+const Jobs = Loadable(lazy(() => import('../JobPage')));
 const Templates = Loadable(lazy(() => import('../views/templates/Templates')));
 const CvBuilder = Loadable(lazy(() => import('../views/cv-builder/CVBuilder')));
 
@@ -22,7 +22,7 @@ const Router = [
             },
             {
                 path: '/jobs',
-                element: <Jobs />,
+                element: <Jobs/>,
             },
             {
                 path: '/templates',
