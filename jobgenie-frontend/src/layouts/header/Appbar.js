@@ -73,6 +73,7 @@ const Appbar = () => {
                 '&:hover': { 
                     color: theme.palette.primary.main ,
                 }
+                
             }}>
                 Templates
             </Button>
@@ -84,10 +85,20 @@ const Appbar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
             <Button variant="contained" color="primary" onClick={() => handleAuthButtonClick('login')}
-            sx={{ marginRight: 1 }}>
+            sx={{ 
+              marginRight: 1,
+              width: '100px',
+              height: '35px',
+              marginLeft: 1,
+               }}>
               Login
             </Button>
-            <Button variant="outlined" color="primary" onClick={() => handleAuthButtonClick('signup')}>
+            <Button variant="outlined" color="primary" onClick={() => handleAuthButtonClick('signup')}
+            sx={{ 
+              width: '100px',
+              height: '35px',
+               }}
+            >
               Sign Up
             </Button>
           </Box>
@@ -95,7 +106,6 @@ const Appbar = () => {
       </AppBar>
     );
   };
-
 
 // Styled button component
 const GradientButton = styled.button`
@@ -111,6 +121,7 @@ const GradientButton = styled.button`
   transition: all 0.5s ease;
   background-size: 200%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); // Drop shadow added
+  width: 120px;
 
   &:hover {
     background-position: right;
