@@ -3,10 +3,12 @@ import * as React from 'react';
 import { RouterProvider, createBrowserRouter, useRoutes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer } from 'react-toastify';
 import Router from './routes/Router';
 
-
+ 
 const theme = createTheme({
   palette: {
     
