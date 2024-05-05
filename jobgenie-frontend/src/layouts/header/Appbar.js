@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import styled, { keyframes } from 'styled-components';
-import { useNavigate, NavLink } from 'react-router-dom';
-
+import React, { useState } from 'react'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import styled, { keyframes } from 'styled-components'
+import { useNavigate, NavLink } from 'react-router-dom'
+import JobPage from '../../JobPage'
 
 const Appbar = () => {
-    const theme = useTheme(); 
-    const activeStyle = {
-        color: theme.palette.primary.main,
-    };
+  const theme = useTheme()
+  const activeStyle = {
+    color: theme.palette.primary.main,
+  }
 
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const nav = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const nav = useNavigate()
 
     const handleNavigate = (path) => () => {
         nav(path);
@@ -109,7 +108,7 @@ const Appbar = () => {
 
 // Styled button component
 const GradientButton = styled.button`
-  background: linear-gradient(to right, #41B4E5 20%, #513DCE 60%);
+  background: linear-gradient(to right, #41b4e5 20%, #513dce 60%);
   color: white;
   font-weight: bold;
   border-radius: 26px;
@@ -127,8 +126,6 @@ const GradientButton = styled.button`
     background-position: right;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.35); // Enhanced shadow on hover for a dynamic effect
   }
-`;
+`
 
-  
-  export default Appbar;
-  
+export default Appbar
