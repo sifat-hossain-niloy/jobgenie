@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <PageContainer title="Home" description="Home Page">
       <h1>Home</h1>
+     
     </PageContainer>
   )
 }

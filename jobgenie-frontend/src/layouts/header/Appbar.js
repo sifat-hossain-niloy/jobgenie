@@ -5,8 +5,14 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import styled, { keyframes } from 'styled-components';
-import { useNavigate, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { useNavigate, NavLink, Link } from 'react-router-dom';
+import Login from '../../components/container/ModalPopup/Login';
+import Signup from '../../components/container/ModalPopup/Signup';
+
+
+
+
 
 
 const Appbar = () => {
@@ -15,6 +21,8 @@ const Appbar = () => {
         color: theme.palette.primary.main,
     };
 
+    const [openLoginModal, setOpenLoginModal] = useState(false)
+    const [openSignupModal, setOpenSignupModal] = useState(false)
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const nav = useNavigate();
@@ -24,9 +32,45 @@ const Appbar = () => {
     };
   
     const handleAuthButtonClick = () => {
-      setIsLoggedIn(!isLoggedIn); 
+      setIsLoggedIn(!isLoggedIn);
     };
+
+    const handleLoginModal =()=>{
+      setOpenLoginModal(true)
+
+    }
+
+    const handleSignupModal =()=>{
+      setOpenSignupModal(true)
+
+    }
+    const closeModal=()=>{
+      setOpenLoginModal(false)
+    }
+    const closeSignupModal=()=>{
+      setOpenSignupModal(false)
+    }
+
+
+    const [tasks, setTasks] = useState([]);
+
+    const saveTasks = (taskObject) =>{
+
+      const newSavedTasks = [...tasks, taskObject];
+      setTasks(newSavedTasks);
+    }
   
+    const deleteTask = (idx) =>{
+      const remainingTasks = tasks.filter(taskItem=>tasks.indexOf(taskItem)!=idx);
+      setTasks(remainingTasks);
+    }
+  
+    const editTask = (editedTask, idx) =>{
+      let tempTask = [...tasks];
+      tempTask[idx] = editedTask;
+      setTasks(tempTask);
+    } 
+
     return (
       <AppBar position="fixed" sx={{ zIndex: theme.zIndex.drawer + 1, backgroundColor: theme.palette.primary.light, }}>
         <Toolbar sx={{
@@ -83,16 +127,23 @@ const Appbar = () => {
 
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
-            <Button variant="contained" color="primary" onClick={() => handleAuthButtonClick('login')}
-            sx={{ marginRight: 1 }}>
+            <Button variant="contained" color="primary" onClick={handleLoginModal}
+            sx={{ marginRight: 1 }} >
               Login
             </Button>
-            <Button variant="outlined" color="primary" onClick={() => handleAuthButtonClick('signup')}>
+            
+            <Button variant="outlined" color="primary" onClick={handleSignupModal}>
               Sign Up
             </Button>
+           
+           
           </Box>
         </Toolbar>
+        <Login openLoginModal={openLoginModal} closeModal={closeModal} saveTasks={saveTasks} ></Login>
+        <Signup openSignupModal={openSignupModal} closeSignupModal={closeSignupModal} saveTasks={saveTasks}></Signup>
       </AppBar>
+
+      
     );
   };
 
