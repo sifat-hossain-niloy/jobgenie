@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 const PageContainer = ({ title, description, children }) => (
-  <div>
+  <div style={{ width: '100%', padding: 0, margin: 0 }}>
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />

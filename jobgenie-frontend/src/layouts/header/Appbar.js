@@ -24,8 +24,9 @@ const Appbar = () => {
     const [openLoginModal, setOpenLoginModal] = useState(false)
     const [openSignupModal, setOpenSignupModal] = useState(false)
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const nav = useNavigate();
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const nav = useNavigate()
 
     const handleNavigate = (path) => () => {
         nav(path);
@@ -52,24 +53,14 @@ const Appbar = () => {
     }
 
 
-    const [tasks, setTasks] = useState([]);
+    //const [tasks, setTasks] = useState([]);
 
-    const saveTasks = (taskObject) =>{
+    const addUser = (taskObject) =>{
 
-      const newSavedTasks = [...tasks, taskObject];
-      setTasks(newSavedTasks);
+     
     }
   
-    const deleteTask = (idx) =>{
-      const remainingTasks = tasks.filter(taskItem=>tasks.indexOf(taskItem)!=idx);
-      setTasks(remainingTasks);
-    }
-  
-    const editTask = (editedTask, idx) =>{
-      let tempTask = [...tasks];
-      tempTask[idx] = editedTask;
-      setTasks(tempTask);
-    } 
+    
 
     return (
       <AppBar position="fixed" sx={{ zIndex: theme.zIndex.drawer + 1, backgroundColor: theme.palette.primary.light, }}>
@@ -117,6 +108,7 @@ const Appbar = () => {
                 '&:hover': { 
                     color: theme.palette.primary.main ,
                 }
+                
             }}>
                 Templates
             </Button>
@@ -132,25 +124,30 @@ const Appbar = () => {
               Login
             </Button>
             
-            <Button variant="outlined" color="primary" onClick={handleSignupModal}>
+            <Button variant="outlined" color="primary" onClick={handleSignupModal}
+            sx={{ 
+              marginRight: 1,
+              width: '100px',
+              height: '35px',
+              marginLeft: 1,
+               }}>
               Sign Up
             </Button>
-           
+            
            
           </Box>
         </Toolbar>
-        <Login openLoginModal={openLoginModal} closeModal={closeModal} saveTasks={saveTasks} ></Login>
-        <Signup openSignupModal={openSignupModal} closeSignupModal={closeSignupModal} saveTasks={saveTasks}></Signup>
+        <Login openLoginModal={openLoginModal} closeModal={closeModal} addUser={addUser} ></Login>
+        <Signup openSignupModal={openSignupModal} closeSignupModal={closeSignupModal} addUser={addUser}></Signup>
       </AppBar>
 
       
     );
   };
 
-
 // Styled button component
 const GradientButton = styled.button`
-  background: linear-gradient(to right, #41B4E5 20%, #513DCE 60%);
+  background: linear-gradient(to right, #41b4e5 20%, #513dce 60%);
   color: white;
   font-weight: bold;
   border-radius: 26px;
@@ -162,13 +159,12 @@ const GradientButton = styled.button`
   transition: all 0.5s ease;
   background-size: 200%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); // Drop shadow added
+  width: 120px;
 
   &:hover {
     background-position: right;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.35); // Enhanced shadow on hover for a dynamic effect
   }
-`;
+`
 
-  
-  export default Appbar;
-  
+export default Appbar;
