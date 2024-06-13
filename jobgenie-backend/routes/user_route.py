@@ -8,9 +8,14 @@ from utils.auth import get_password_hash, verify_password, create_access_token, 
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from datetime import timedelta
 from jose import JWTError, jwt
+from pydantic import BaseModel
 
 user_router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
 
 # Signup a new user
 @user_router.post("/signup", response_model=User)
@@ -26,8 +31,8 @@ async def create_user(user: User):
 
 # Login user
 @user_router.post("/token", response_model=dict)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = users_collection.find_one({"username": form_data.username})
+async def login_for_access_token(login_request: LoginRequest):
+    user = users_collection.find_one({"username": login_request.username})
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -35,7 +40,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
             headers={"WWW-Authenticate": "Bearer"},
         )
     user = serializeDict(user)
-    if not verify_password(form_data.password, user["password"]):
+    if not verify_password(login_request.password, user["password"]):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
@@ -45,7 +50,12 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = create_access_token(
         data={"sub": user["username"]}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {
+        "accessToken": access_token,
+        "tokenType": "bearer",
+        "userId": str(user["_id"]),
+        "username": user["username"]
+    }
 
 # Utility to get the current user
 async def get_current_user(token: str = Depends(oauth2_scheme)):
