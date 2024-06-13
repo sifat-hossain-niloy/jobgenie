@@ -1,31 +1,67 @@
-import React, { useState } from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import { useTheme } from '@mui/material/styles'
-import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
-import styled, { keyframes } from 'styled-components'
-import { useNavigate, NavLink } from 'react-router-dom'
-import JobPage from '../../JobPage'
+
+import React, { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import styled from 'styled-components';
+import { useNavigate, NavLink, Link } from 'react-router-dom';
+import Login from '../../components/container/ModalPopup/Login';
+import Signup from '../../components/container/ModalPopup/Signup';
+
+
+
+
 
 const Appbar = () => {
-  const theme = useTheme()
-  const activeStyle = {
-    color: theme.palette.primary.main,
-  }
+    const theme = useTheme(); 
+    const activeStyle = {
+        color: theme.palette.primary.main,
+    };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const nav = useNavigate()
+    const [openLoginModal, setOpenLoginModal] = useState(false)
+    const [openSignupModal, setOpenSignupModal] = useState(false)
+
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const nav = useNavigate()
 
     const handleNavigate = (path) => () => {
         nav(path);
     };
   
     const handleAuthButtonClick = () => {
-      setIsLoggedIn(!isLoggedIn); 
+      setIsLoggedIn(!isLoggedIn);
     };
+
+    const handleLoginModal =()=>{
+      setOpenLoginModal(true)
+
+    }
+
+    const handleSignupModal =()=>{
+      setOpenSignupModal(true)
+
+    }
+    const closeModal=()=>{
+      setOpenLoginModal(false)
+    }
+    const closeSignupModal=()=>{
+      setOpenSignupModal(false)
+    }
+
+
+    //const [tasks, setTasks] = useState([]);
+
+    const addUser = (taskObject) =>{
+
+     
+    }
   
+    
+
     return (
       <AppBar position="fixed" sx={{ zIndex: theme.zIndex.drawer + 1, backgroundColor: theme.palette.primary.light, }}>
         <Toolbar sx={{
@@ -83,26 +119,29 @@ const Appbar = () => {
 
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
-            <Button variant="contained" color="primary" onClick={() => handleAuthButtonClick('login')}
+            <Button variant="contained" color="primary" onClick={handleLoginModal}
+            sx={{ marginRight: 1 }} >
+              Login
+            </Button>
+            
+            <Button variant="outlined" color="primary" onClick={handleSignupModal}
             sx={{ 
               marginRight: 1,
               width: '100px',
               height: '35px',
               marginLeft: 1,
                }}>
-              Login
-            </Button>
-            <Button variant="outlined" color="primary" onClick={() => handleAuthButtonClick('signup')}
-            sx={{ 
-              width: '100px',
-              height: '35px',
-               }}
-            >
               Sign Up
             </Button>
+            
+           
           </Box>
         </Toolbar>
+        <Login openLoginModal={openLoginModal} closeModal={closeModal} addUser={addUser} ></Login>
+        <Signup openSignupModal={openSignupModal} closeSignupModal={closeSignupModal} addUser={addUser}></Signup>
       </AppBar>
+
+      
     );
   };
 
@@ -128,4 +167,4 @@ const GradientButton = styled.button`
   }
 `
 
-export default Appbar
+export default Appbar;

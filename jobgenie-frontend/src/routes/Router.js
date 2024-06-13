@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/Loadable';
+import { element } from 'prop-types';
+
 
 
 const FullLayout = Loadable(lazy(() => import('../layouts/FullLayout')));
@@ -33,6 +35,7 @@ const Router = [
                 path: '/cv-builder',
                 element: <CvBuilder />,
             },
+           
         ]
     },
 ];

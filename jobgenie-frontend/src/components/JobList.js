@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardContent, Typography, Avatar, Box } from '@mui/material';
+import { Grid, Card, CardContent, Typography, Avatar, Box, Paper } from '@mui/material';
 import BusinessIcon from '@mui/icons-material/Business'; // Icon for the company, you can replace it with actual logos if available
 
 const jobs = [
@@ -54,51 +54,169 @@ const jobs = [
     logo: 'https://example.com/path/to/spotify/logo.png' // Replace with actual logo URL if available
   }
 ];
-/* Job 1 */
-
-// box-sizing: border-box;
-
-// position: absolute;
-// width: 1314px;
-// height: 290px;
-// left: calc(50% - 1314px/2);
-// top: 29px;
-
-// border: 1px solid #6C757D;
-// border-radius: 30px;
 
 
 function JobList() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+    <Paper sx={{
+      position: 'absolute',
+      width: '800px',
+      // height: '1015px',
+      left: '450px',
+      top: '92px',
+      // overflowY: 'scroll',
+      // overflowX:'hidden',
+      // border: '1px solid #CED4DA',
+      borderRadius: '25px',
+      boxSizing: 'border-box',
+    }}>
+      <Grid container spacing={2}
+      sx = {
+        {
+          position: 'absolute',
+          width: '800px',
+          height: '1015px',
+          left: '0px',
+          right:'10px',
+          top: '20px',
+          // overflowY: 'hidden',
+          // overflowX:'hidden',
+          // border: '1px solid #CED4DA',
+          borderRadius: '25px',
+          boxSizing: 'border-box',
+        }
+      }>
         {jobs.map((job, index) => (
-          <Grid item xs={12} key={index} height = "290px" boxSizing={'border-box'} width={'1314px'} top={'29px'} borderRadius="30px" border={"1px solid #6C757D"}>
-            {/* <Card >
-              <CardContent> */}
-                <Box  display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-                  <Avatar src={job.logo} alt={job.company} sx={{ width: 56, height: 56 }} />
-                  <Box>
-                    <Typography variant="h6" component="div">{job.title}</Typography>
-                    <Typography variant="body2" color="textSecondary">{job.company}</Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="body2">{job.jobType}</Typography>
-                    <Typography variant="body2">{job.location}</Typography>
-                  </Box>
+          <Grid item xs={11} key={index} sx={{
+            position: 'relative',
+            width: '500px',
+            left:'40px',
+            height: '290px',
+            mt: index !== 0 ? 2 : 0,
+            borderRadius: '25px',
+            border: '1px solid #6C757D',
+            boxSizing: 'border-box',
+            overflowX:'hidden'
+            // padding : '20px',
+          }}>
+            <Box sx={{
+              position: 'absolute',
+              width: '600px',
+              height: '77px',
+              left: '22px',
+              top: '20px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <Avatar src={job.logo} alt={job.company} sx={{ width: 56, height: 56 }} />
+              <Box sx={{
+                position: 'absolute',
+                width: '400px',
+                height: '68px',
+                left: '80px',
+                top: '2px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
+                <Typography variant="h6" component="div" sx={{
+                  position: 'absolute',
+                  width: '500px',
+                  height: '31px',
+                  left: '0px',
+                  top: '0px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '34px',
+                  color: '#000000'
+                }}>
+                  {job.title}
+                </Typography>
+                <Box sx={{
+                  position: 'absolute',
+                  width: '200px',
+                  height: '30px',
+                  left: '0px',
+                  top: '38px',
+                  display: 'flex',
+                  justifyContent: 'space-between', // Adjust spacing as necessary
+                  alignItems: 'center'
+                }}>
+                  <Typography variant="body2" color="textSecondary">
+                    {job.company}
+                  </Typography>
+                  <Typography variant="body2">
+                    {job.jobType === 'Remote' ? 'Remote' : 'On-site'}
+                  </Typography>
+                  <Typography variant="body2">
+                    {job.jobType}
+                  </Typography>
                 </Box>
-                <Typography variant="body2" color="textSecondary">{job.description}</Typography>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-                  <Typography variant="body2">Salary: {job.salary}</Typography>
-                  <Typography variant="body2">{job.expertise}</Typography>
-                </Box>
-              {/* </CardContent>
-            </Card> */}
+              </Box>
+
+              <Box sx={{
+              position: 'absolute',
+              width: '358px',
+              height: '70px',
+              left: '500px',
+              // right: '20px',
+              top: '0px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center' // Centers the content vertically within the box
+            }}>
+              <Typography variant="body2">{job.location}</Typography>
+              <Typography variant="body2">{`Posted ${calculateDaysAgo(job.postedDate)} days ago`}</Typography>
+            </Box>
+
+            </Box>
+            <Box sx={{
+              position: 'absolute',
+              width: '648px',
+              height: '120px',
+              left: '22px',
+              top: '60px',
+              overflow: 'auto' // Prevents text overflow; adjust as necessary
+            }}>
+              <Typography variant="body2" color="textSecondary" sx={{ mt: 9 }}>
+                {job.description}
+              </Typography>
+            </Box>  
+
+            <Box sx={{
+              position: 'absolute',
+              width: '600px',
+              height: '40px',
+              left: '20px',
+              top: '228px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <Typography variant="body2">Salary: {job.salary}</Typography>
+              <Typography variant="body2"
+              sx = {
+                {
+                  right:'10px'
+                }
+              }
+              >{job.expertise}</Typography>
+            </Box>
+
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Paper>
   );
+}
+
+function calculateDaysAgo(postedDate) {
+  const datePosted = new Date(postedDate);
+  const currentDate = new Date();
+  const differenceInTime = currentDate.getTime() - datePosted.getTime();
+  return Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert the time difference from milliseconds to days
 }
 
 export default JobList;
