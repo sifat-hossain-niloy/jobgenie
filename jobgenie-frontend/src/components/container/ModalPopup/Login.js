@@ -1,9 +1,40 @@
-import { Modal, Label } from "flowbite-react";
+import { Label } from "flowbite-react";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiFillCloseSquare } from "react-icons/ai";
+import { Modal, Box } from "@mui/material";
 
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'auto', // Adjusted for wider content
+    minwidth: '250px', // Adjusted for wider content
+    maxWidth: '50%', // Ensures modal doesn't become too large
+    overflowX: 'auto', // Allows horizontal scrolling
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 1,
+    maxHeight: '80vh',
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '5px',
+    },
+    '&::-webkit-scrollbar-track': {
+      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.0)',
+      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.0)',
+      borderRadius: '10px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'darkgrey',
+      outline: '1px solid slategrey',
+      borderRadius: '30px',
+    },
+  };
 
 const Login = ({ openLoginModal, closeModal, addUser }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -18,14 +49,14 @@ const Login = ({ openLoginModal, closeModal, addUser }) => {
     }
     return (
 
-        <Modal show={openLoginModal} onClose={closeModal} className="w-6/12 border rounded-xl shadow-xl h-[600px] fixed my-auto mx-auto overflow-y-scroll bg-white z-10">
+        <Modal open={openLoginModal} onClose={closeModal}>
+            <Box sx={style}>
             <div className="flex justify-center items-center flex-col bg-white">
                 <form className=" flex justify-center px-12 pt-12 w-full" onSubmit={handleLogin}>
 
                     <div className="flex flex-col gap-4 items-start w-full px-24">
-                        <div className="w-full flex justify-end"><AiFillCloseSquare className="text-xl" onClick={closeModal} cursor=' pointer' /></div>
                         <div className="text-black font-black text-3xl">Log In</div>
-                        <div className="text-lg">Doesn’t have an account yet? <span><a href="#" className=" underline text-[#13287E] font-bold">Sign Up</a></span></div>
+                        <div className="text-lg">Don’t have an account yet? <span><a href="#" className=" underline text-[#13287E] font-bold">Sign Up</a></span></div>
                         <div className="flex flex-col gap-2 w-full">
                             <Label className="text-lg font-semibold">Email Address</Label>
                             <input type='email' className="rounded-xl w-full shadow-xl" placeholder="you@example.com" required name="email"></input>
@@ -66,7 +97,7 @@ const Login = ({ openLoginModal, closeModal, addUser }) => {
                 </div>
 
             </div>
-
+            </Box>
 
         </Modal>
 

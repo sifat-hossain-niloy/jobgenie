@@ -1,9 +1,39 @@
-import { Modal, Label } from "flowbite-react";
+import { Label } from "flowbite-react";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiFillCloseSquare } from "react-icons/ai";
+import { Modal, Box } from "@mui/material";
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'auto', // Adjusted for wider content
+    minwidth: '250px', // Adjusted for wider content
+    maxWidth: '50%', // Ensures modal doesn't become too large
+    overflowX: 'auto', // Allows horizontal scrolling
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 1,
+    maxHeight: '90vh',
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '5px',
+    },
+    '&::-webkit-scrollbar-track': {
+      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.0)',
+      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.0)',
+      borderRadius: '10px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'darkgrey',
+      outline: '1px solid slategrey',
+      borderRadius: '30px',
+    },
+  };
 
 const Signup = ({ openSignupModal, closeSignupModal, addUser }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -22,12 +52,12 @@ const Signup = ({ openSignupModal, closeSignupModal, addUser }) => {
     }
     return (
 
-        <Modal show={openSignupModal} onClose={closeSignupModal} className="w-6/12 border rounded-xl shadow-xl h-[600px] fixed my-auto mx-auto overflow-y-scroll z-10">
+        <Modal open={openSignupModal} onClose={closeSignupModal}>
+        <Box sx={style}>            
             <div className="flex justify-center items-center h-[600px]  flex-col border bg-white">
                 <form className=" flex justify-center px-12 pt-20 w-full bg-white" onSubmit={handleSave}>
 
                     <div className="flex flex-col gap-4 items-start w-full px-24">
-                        <div className="w-full flex justify-end"><AiFillCloseSquare className="text-xl" onClick={closeSignupModal} cursor=' pointer' /></div>
                         <div className="text-black font-black text-3xl">Sign Up</div>
                         <div className="text-lg">Already have an account yet? <span><a href="#" className=" underline text-[#13287E] font-bold">Log in</a></span></div>
                         <div className="flex flex-col gap-2 w-full">
@@ -69,6 +99,8 @@ const Signup = ({ openSignupModal, closeSignupModal, addUser }) => {
                
             </div>
 
+
+            </Box>
 
         </Modal>
 
