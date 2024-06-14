@@ -22,6 +22,7 @@ db = client.jobgenie_db
 
 # Access collections
 users_collection = db["users"]
+user_data_collection = db["user_data"]
 
 # Create unique indexes
 users_collection.create_index("username", unique=True)

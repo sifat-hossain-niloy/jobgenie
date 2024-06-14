@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/Loadable';
+import { element } from 'prop-types';
+
 
 
 const FullLayout = Loadable(lazy(() => import('../layouts/FullLayout')));
@@ -9,6 +11,7 @@ const Home = Loadable(lazy(() => import('../views/home/Home')));
 const Jobs = Loadable(lazy(() => import('../views/jobs/JobPage.js')));
 const Templates = Loadable(lazy(() => import('../views/templates/Templates')));
 const CvBuilder = Loadable(lazy(() => import('../views/cv-builder/CVBuilder')));
+const Account = Loadable(lazy(() => import('../views/account/Account')));
 
 const Router = [
     {
@@ -33,6 +36,11 @@ const Router = [
                 path: '/cv-builder',
                 element: <CvBuilder />,
             },
+            {
+                path: '/account',
+                element: <Account />,
+            },
+           
         ]
     },
 ];

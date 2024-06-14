@@ -4,8 +4,7 @@ from typing import Optional
 class User(BaseModel):
     username: str = Field(..., example="johndoe")
     email: str = Field(..., example="johndoe@example.com")
-    full_name: Optional[str] = Field(None, example="John Doe")
-    disabled: Optional[bool] = None
+    password: str = Field(..., example="password123")
 
     class Config:
         orm_mode = True
@@ -13,7 +12,6 @@ class User(BaseModel):
             "example": {
                 "username": "johndoe",
                 "email": "johndoe@example.com",
-                "full_name": "John Doe",
-                "disabled": False
+                "password": "password123"
             }
         }
