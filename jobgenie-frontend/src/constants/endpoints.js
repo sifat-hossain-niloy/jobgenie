@@ -6,4 +6,8 @@ export const endpoints = {
     // Auth
     LOGIN: BASE + '/token',
     REGISTER: BASE + '/signup',
+
+    // Account
+    PROFILE: BASE + '/user/profile',
+    PROFILE_IMAGE: BASE + '/user/profile/image',
 };

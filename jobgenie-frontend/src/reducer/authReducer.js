@@ -8,6 +8,7 @@ const authReducer = (state, action) => {
           username: action.payload.username,
           error: null,
           userId: action.payload.userId,
+          accessToken: action.payload.accessToken,
         };
 
       case "LOGOUT":
@@ -17,6 +18,7 @@ const authReducer = (state, action) => {
           isAuthenticated: false,
           username: null,
           userId: null,
+          accessToken: null,
         };
       
       case "RESTORE_STATE":

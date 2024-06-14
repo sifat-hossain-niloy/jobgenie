@@ -11,6 +11,7 @@ const inialState = {
   error: null,
   stateRestored: false,
   userId: null,
+  accessToken: null,
 };
  
 const AuthProvider = ({ children }) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -16,9 +16,11 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import AdbIcon from '@mui/icons-material/Adb';
+import axios from 'axios';
+import { endpoints } from '../../constants/endpoints';
 
 const Appbar = () => {
-  const { isAuthenticated, logout, username } = useAuthContext();
+  const { isAuthenticated, logout, username, accessToken } = useAuthContext();
 
   const theme = useTheme();
   const activeStyle = {
@@ -28,6 +30,7 @@ const Appbar = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
 
   const nav = useNavigate();
 
@@ -59,11 +62,35 @@ const Appbar = () => {
     setAnchorElUser(null);
   };
 
+  const handleAccount = () => {
+    nav('/account');
+  };
+
   const logoutUser = () => {
     logout();
     handleCloseUserMenu(); // Close the user menu on logout
     nav('/home');
   };
+
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      if (isAuthenticated) {
+        try {
+          const response = await axios.get(endpoints.PROFILE_IMAGE, {
+            headers: { Authorization: `Bearer ${accessToken}` },
+            responseType: 'blob',
+          });
+
+          const imageUrl = URL.createObjectURL(response.data);
+          setProfileImage(imageUrl);
+        } catch (error) {
+          console.error('Error fetching profile image:', error);
+        }
+      }
+    };
+
+    fetchProfileImage();
+  }, [isAuthenticated, accessToken]);
 
   return (
     <AppBar position="fixed" sx={{ zIndex: theme.zIndex.drawer + 1, backgroundColor: theme.palette.primary.light }}>
@@ -122,7 +149,7 @@ const Appbar = () => {
             <>
               <Tooltip title="My Account">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={username} />
+                  <Avatar alt={username} src={profileImage}/>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -141,7 +168,7 @@ const Appbar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key='account' onClick={handleCloseUserMenu}>
+                <MenuItem key='account' onClick={handleAccount}>
                   <Typography textAlign="center">Account</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={logoutUser}>

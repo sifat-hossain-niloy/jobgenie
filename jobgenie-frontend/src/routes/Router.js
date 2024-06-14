@@ -11,6 +11,7 @@ const Home = Loadable(lazy(() => import('../views/home/Home')));
 const Jobs = Loadable(lazy(() => import('../JobPage')));
 const Templates = Loadable(lazy(() => import('../views/templates/Templates')));
 const CvBuilder = Loadable(lazy(() => import('../views/cv-builder/CVBuilder')));
+const Account = Loadable(lazy(() => import('../views/account/Account')));
 
 const Router = [
     {
@@ -34,6 +35,10 @@ const Router = [
             {
                 path: '/cv-builder',
                 element: <CvBuilder />,
+            },
+            {
+                path: '/account',
+                element: <Account />,
             },
            
         ]
