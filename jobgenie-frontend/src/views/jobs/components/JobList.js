@@ -56,75 +56,63 @@ const jobs = [
 ];
 
 
+
+function calculateDaysAgo(postedDate) {
+  const datePosted = new Date(postedDate);
+  const currentDate = new Date();
+  const differenceInTime = currentDate.getTime() - datePosted.getTime();
+  return Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert the time difference from milliseconds to days
+}
+
 function JobList() {
   return (
     <Paper sx={{
       position: 'absolute',
-      width: '800px',
-      // height: '1015px',
-      left: '450px',
+      width: '65%',
       top: '92px',
-      // overflowY: 'scroll',
-      // overflowX:'hidden',
-      // border: '1px solid #CED4DA',
       borderRadius: '25px',
       boxSizing: 'border-box',
     }}>
-      <Grid container spacing={2}
-      sx = {
-        {
-          position: 'absolute',
-          width: '800px',
-          height: '1015px',
-          left: '0px',
-          right:'10px',
-          top: '20px',
-          // overflowY: 'hidden',
-          // overflowX:'hidden',
-          // border: '1px solid #CED4DA',
-          borderRadius: '25px',
-          boxSizing: 'border-box',
-        }
-      }>
+      <Grid container spacing={2} sx={{
+        position: 'absolute',
+        height: '1015px',
+        left: '0px',
+        top: '20px',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        borderRadius: '25px',
+        boxSizing: 'border-box',
+      }}>
         {jobs.map((job, index) => (
           <Grid item xs={11} key={index} sx={{
             position: 'relative',
-            width: '500px',
-            left:'40px',
+            left: '40px',
             height: '290px',
             mt: index !== 0 ? 2 : 0,
             borderRadius: '25px',
             border: '1px solid #6C757D',
             boxSizing: 'border-box',
-            overflowX:'hidden'
-            // padding : '20px',
+            overflowX: 'hidden'
           }}>
             <Box sx={{
               position: 'absolute',
-              width: '600px',
               height: '77px',
               left: '22px',
               top: '20px',
               display: 'flex',
+              flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'center'
+              alignItems: 'center',
+              width: 'calc(100% - 44px)'
             }}>
               <Avatar src={job.logo} alt={job.company} sx={{ width: 56, height: 56 }} />
               <Box sx={{
-                position: 'absolute',
-                width: '400px',
-                height: '68px',
-                left: '80px',
-                top: '2px',
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                ml: 2,
+                flex: 1
               }}>
                 <Typography variant="h6" component="div" sx={{
-                  position: 'absolute',
-                  width: '500px',
-                  height: '31px',
-                  left: '0px',
-                  top: '0px',
                   fontFamily: 'Inter',
                   fontStyle: 'normal',
                   fontWeight: 700,
@@ -135,13 +123,9 @@ function JobList() {
                   {job.title}
                 </Typography>
                 <Box sx={{
-                  position: 'absolute',
-                  width: '200px',
-                  height: '30px',
-                  left: '0px',
-                  top: '38px',
                   display: 'flex',
-                  justifyContent: 'space-between', // Adjust spacing as necessary
+                  justifyContent: 'start',
+                  gap:1,
                   alignItems: 'center'
                 }}>
                   <Typography variant="body2" color="textSecondary">
@@ -155,40 +139,29 @@ function JobList() {
                   </Typography>
                 </Box>
               </Box>
-
               <Box sx={{
-              position: 'absolute',
-              width: '358px',
-              height: '70px',
-              left: '500px',
-              // right: '20px',
-              top: '0px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center' // Centers the content vertically within the box
-            }}>
-              <Typography variant="body2">{job.location}</Typography>
-              <Typography variant="body2">{`Posted ${calculateDaysAgo(job.postedDate)} days ago`}</Typography>
-            </Box>
-
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end'
+              }}>
+                <Typography variant="body2">{job.location}</Typography>
+                <Typography variant="body2">{`Posted ${calculateDaysAgo(job.postedDate)} days ago`}</Typography>
+              </Box>
             </Box>
             <Box sx={{
               position: 'absolute',
-              width: '648px',
-              height: '120px',
+              width: 'calc(100% - 44px)',
               left: '22px',
-              top: '60px',
-              overflow: 'auto' // Prevents text overflow; adjust as necessary
+              top: '120px',
+              overflow: 'auto'
             }}>
-              <Typography variant="body2" color="textSecondary" sx={{ mt: 9 }}>
+              <Typography variant="body2" color="textSecondary">
                 {job.description}
               </Typography>
-            </Box>  
-
+            </Box>
             <Box sx={{
               position: 'absolute',
-              width: '600px',
-              height: '40px',
+              width: 'calc(100% - 40px)',
               left: '20px',
               top: '228px',
               display: 'flex',
@@ -196,27 +169,13 @@ function JobList() {
               alignItems: 'center'
             }}>
               <Typography variant="body2">Salary: {job.salary}</Typography>
-              <Typography variant="body2"
-              sx = {
-                {
-                  right:'10px'
-                }
-              }
-              >{job.expertise}</Typography>
+              <Typography variant="body2">{job.expertise}</Typography>
             </Box>
-
           </Grid>
         ))}
       </Grid>
     </Paper>
   );
-}
-
-function calculateDaysAgo(postedDate) {
-  const datePosted = new Date(postedDate);
-  const currentDate = new Date();
-  const differenceInTime = currentDate.getTime() - datePosted.getTime();
-  return Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert the time difference from milliseconds to days
 }
 
 export default JobList;

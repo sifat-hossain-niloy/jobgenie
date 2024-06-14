@@ -95,7 +95,8 @@ return (
       borderRadius: '25px',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'space-evenly',
+      marginRight: '100px',
       padding: '10px'
     }}>
       <Typography variant="h6" gutterBottom
