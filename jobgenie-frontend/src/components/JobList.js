@@ -218,5 +218,5 @@ function calculateDaysAgo(postedDate) {
   const differenceInTime = currentDate.getTime() - datePosted.getTime();
   return Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert the time difference from milliseconds to days
 }
-
+ 
 export default JobList;
