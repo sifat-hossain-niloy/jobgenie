@@ -51,6 +51,7 @@ const SimilarJobs = ({ similarJobs }) => {
         </Card>
       ))}
     </div>
+    
   );
 };
 
