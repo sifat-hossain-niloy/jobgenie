@@ -76,8 +76,8 @@ return (
   <Paper style={{
     padding: '16px',
     position: 'absolute',
-    width: '30%',
-    height: '1014px',
+    width: '25%',
+    height: '860px',
     left: '57px',
     top: '92px',
     overflowY: 'scroll',
@@ -87,7 +87,7 @@ return (
   }}>
   <Box sx={{
       position: 'absolute',
-      width: '92%',
+      width: '90%',
       height: '80px',
       // left: '17px',
       top: '0px',
@@ -95,7 +95,8 @@ return (
       borderRadius: '25px',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-evenly',
+      // justifyContent: 'space-evenly',
+      justifyContent:'space-between',
       marginRight: '100px',
       padding: '10px'
     }}>
