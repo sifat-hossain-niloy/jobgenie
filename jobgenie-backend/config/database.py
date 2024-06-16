@@ -4,6 +4,9 @@ from pymongo import MongoClient
 
 load_dotenv()
 
+# Print to verify MONGO_URI is loaded correctly
+print(f"MONGO_URI: {os.getenv('MONGO_URI')}")
+
 # Ensure MongoDB URI is present
 mongo_uri = os.getenv("MONGO_URI")
 if not mongo_uri:
