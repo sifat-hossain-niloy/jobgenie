@@ -3,7 +3,6 @@ import { Card, CardContent, Typography, Grid, Button, IconButton, Avatar } from 
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import ShareIcon from '@mui/icons-material/Share';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
 const cardStyles = {
     position: 'relative',
     borderRadius: '25px',
@@ -124,5 +123,5 @@ const JobDetails = ({ job }) => {
       </Card>
     );
   };
-  
+
 export default JobDetails;  

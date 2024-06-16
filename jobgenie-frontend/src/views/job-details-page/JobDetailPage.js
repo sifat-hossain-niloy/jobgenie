@@ -14,7 +14,6 @@ const JobDetailPage = ({ jobs }) => {
 
   // Filter similar jobs based on some criteria, e.g., same company or job type
   const similarJobs = jobs.filter(j => j.company === job.company && j.id !== job.id);
-
   return (
     <Paper sx={{ padding: 2, margin: 'auto', maxWidth: 1200 }}>
       <Grid container spacing={3}>

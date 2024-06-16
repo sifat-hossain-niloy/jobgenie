@@ -16,6 +16,7 @@ function JobPage({ jobs }) {
       </Grid>
     </div>
   );
+  
 }
 
 export default JobPage;
