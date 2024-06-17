@@ -146,7 +146,7 @@ const Appbar = () => {
           >
             Templates
           </Button>
-          <GradientButton onClick={handleNavigate('/cv-builder')}>CV Builder</GradientButton>
+          <GradientButton onClick={handleNavigate('/sections')}>CV Builder</GradientButton>
         </Box>
         <Box sx={{ flexGrow: 0, display: 'flex' }}>
           {isAuthenticated ? (

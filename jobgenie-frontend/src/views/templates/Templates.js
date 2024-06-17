@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PageContainer from '../../components/container/PageContainer'
-import FeatureCard from '../../components/container/FeatureCard/FeatureCard'
+import Section4 from '../home/components/Section4'
 import {useLoaderData, useOutletContext } from 'react-router-dom'
 
 
@@ -11,16 +11,13 @@ const Templates = () => {
   console.log(data);
 
   return (
-    <PageContainer title="Templates" description="Templates">
-    <div className='grid grid-cols-3 gap-4'>
-      
+    <PageContainer title="Templates" description="Home Page">
+      <div style={{ width: '100%', padding: 0, margin: 0 }}>
 
-      {data.map((card) => (
-        <FeatureCard></FeatureCard>
-      ))}
+        <Section4 />
 
+      </div>
       
-    </div>
     </PageContainer>
   )
 }
