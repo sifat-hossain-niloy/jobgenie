@@ -78,6 +78,7 @@ const Home = Loadable(lazy(() => import('../views/home/Home')));
 const Jobs = Loadable(lazy(() => import('../views/jobs/JobPage.js')));
 const Templates = Loadable(lazy(() => import('../views/templates/Templates')));
 const CvBuilder = Loadable(lazy(() => import('../views/cv-builder/CVBuilder')));
+const CVSections = Loadable(lazy(() => import('../components/container/CVSections/CVSections.jsx')));
 const Account = Loadable(lazy(() => import('../views/account/Account')));
 const JobDetails = Loadable(lazy(() => import('../views/job-details-page/JobDetailPage.js')));
 
@@ -107,6 +108,10 @@ const Router = [
       {
         path: '/account',
         element: <Account />,
+      },
+      {
+        path: '/sections',
+        element: <CVSections />,
       },
       {
         path: '/jobs/:jobId',
