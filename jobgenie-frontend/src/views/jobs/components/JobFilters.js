@@ -338,6 +338,35 @@ function JobFilters({ onSearch }) {
     setCustomSalaryRange({ ...customSalaryRange, [field]: event.target.value });
   };
 
+<<<<<<< HEAD:jobgenie-frontend/src/views/jobs/components/JobFilters.js
+return (
+  <Paper style={{
+    padding: '16px',
+    position: 'absolute',
+    width: '25%',
+    height: '860px',
+    left: '57px',
+    top: '92px',
+    overflowY: 'scroll',
+    background: '#FFFFFF',
+    border: '1px solid #CED4DA',
+    borderRadius: '40px'
+  }}>
+  <Box sx={{
+      position: 'absolute',
+      width: '90%',
+      height: '80px',
+      // left: '17px',
+      top: '0px',
+      border: '1px solid #CED4DA',
+      borderRadius: '25px',
+      display: 'flex',
+      alignItems: 'center',
+      // justifyContent: 'space-evenly',
+      justifyContent:'space-between',
+      marginRight: '100px',
+      padding: '10px'
+=======
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
   };
@@ -367,6 +396,7 @@ function JobFilters({ onSearch }) {
       background: '#FFFFFF',
       border: '1px solid #CED4DA',
       borderRadius: '40px'
+>>>>>>> 571777e8ce97d9d7bcb3186a14e97969f74312f3:jobgenie-frontend/src/components/JobFilters.js
     }}>
       <Box sx={{
         position: 'absolute',
