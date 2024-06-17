@@ -64,6 +64,7 @@ const Appbar = () => {
 
   const handleAccount = () => {
     nav('/account');
+    handleCloseUserMenu();
   };
 
   const logoutUser = () => {
@@ -85,6 +86,9 @@ const Appbar = () => {
           setProfileImage(imageUrl);
         } catch (error) {
           console.error('Error fetching profile image:', error);
+          if (error.response && error.response.status === 401) {
+            logoutUser();
+          }
         }
       }
     };

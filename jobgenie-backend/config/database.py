@@ -27,3 +27,6 @@ user_data_collection = db["user_data"]
 # Create unique indexes
 users_collection.create_index("username", unique=True)
 users_collection.create_index("email", unique=True)
+
+user_data_collection.create_index("userId", unique=True)
+user_data_collection.create_index("email", unique=True)

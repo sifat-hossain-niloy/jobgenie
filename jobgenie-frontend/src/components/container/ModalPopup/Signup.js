@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Modal, Box } from "@mui/material";
 import { useAuthContext } from '../../../context/authContext';
+import { toast } from "react-toastify";
 
 const style = {
   position: 'absolute',
@@ -40,7 +41,7 @@ const Signup = ({ openSignupModal, closeSignupModal }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
-  const { register } = useAuthContext();
+  const { register, username } = useAuthContext();
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ const Signup = ({ openSignupModal, closeSignupModal }) => {
       setConfirmPassword('');
       setError(null);
       closeSignupModal();
+      toast.success(`Welcome!`);
     } catch (err) {
       if (err.response && err.response.data && err.response.data.detail) {
         setError(err.response.data.detail);
