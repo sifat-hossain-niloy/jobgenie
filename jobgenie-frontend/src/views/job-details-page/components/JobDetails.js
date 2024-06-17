@@ -96,10 +96,10 @@ const JobDetails = ({ job }) => {
             </Grid>
           </Grid>
   
-          {/* Job Description and Other Details */}
-          <Typography variant="body1" sx={{ mt: 2 }}>{job.description}</Typography>
-          <Typography variant="body2" sx={{ mt: 2 }}>Salary: {job.salary}</Typography>
-          <Typography variant="body2">Expertise: {job.expertise}</Typography>
+          {/* Job Description and Other Details
+        //   <Typography variant="body1" sx={{ mt: 2 }}>{job.description}</Typography>
+        //   <Typography variant="body2" sx={{ mt: 2 }}>Salary: {job.salary}</Typography>
+        //   <Typography variant="body2">Expertise: {job.expertise}</Typography> */}
   
           {/* Additional Sections */}
           <Typography variant="h6" sx={{ mt: 4 }}>About the job</Typography>
