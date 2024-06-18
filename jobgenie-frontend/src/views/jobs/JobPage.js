@@ -1,22 +1,21 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import JobFilters from './components/JobFilters';
 import JobList from './components/JobList';
+import PageContainer from '../../components/container/PageContainer';
 
 function JobPage({ jobs }) {
   return (
-    <div style={{ width: '100%', padding: 0, margin: 0 }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} md={4}>
           <JobFilters />
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} md={8}>
           <JobList jobs={jobs} />
         </Grid>
       </Grid>
-    </div>
   );
-  
+
 }
 
 export default JobPage;
