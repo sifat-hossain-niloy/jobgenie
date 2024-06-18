@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid, Avatar, IconButton } from '@mui/material';
+import { Card, CardContent, Typography, Grid, Avatar, IconButton, Paper } from '@mui/material';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,9 @@ const SimilarJobs = ({ similarJobs }) => {
   };
 
   return (
-    <div>
+    // <div>
+    <Card sx={cardStyles}>
+        <CardContent>
       <Typography variant="h6" sx={{ mb: 2 }}>Similar Jobs</Typography>
       {similarJobs.map((job) => (
         <Card key={job.id} sx={{ ...cardStyles, mb: 2 }} onClick={() => handleJobClick(job.id)}>
@@ -64,7 +66,8 @@ const SimilarJobs = ({ similarJobs }) => {
           </CardContent>
         </Card>
       ))}
-    </div>
+      </CardContent>
+      </Card>
   );
 };
 
